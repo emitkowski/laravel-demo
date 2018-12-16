@@ -88,13 +88,14 @@
         </table>
 
         <!-- Delete Token Modal -->
-        <div class="modal fade" :id="'modal-delete-attachment-' + this.type + '-' + this.id" tabindex="-1"
-             role="dialog">
-            <div class="modal-dialog" v-if="deletingAttachment">
+        <div class="modal" :id="'modal-delete-attachment-' + this.type + '-' + this.id" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog" role="document" v-if="deletingAttachment">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title">Delete Attachment</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h5 class="modal-title">Delete Attachment</h5>
                     </div>
 
                     <div class="modal-body">
@@ -105,9 +106,7 @@
                     <!-- Modal Actions -->
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">No, Go Back</button>
-
-                        <button type="button" class="btn btn-danger" @click="deleteAttachment"
-                                :disabled="deleteAttachmentForm.busy">
+                        <button type="button" class="btn btn-danger" @click="deleteAttachment" :disabled="deleteAttachmentForm.busy">
                             <span v-if="deleteAttachmentForm.busy">
                                 <i class="fa fa-btn fa-spinner fa-spin"></i>Deleting Attachment
                             </span>
@@ -206,10 +205,10 @@
                 Spark.delete('/attachment/' + this.deletingAttachment.uuid, this.deleteAttachmentForm)
                     .then(() => {
                         this.getAttachments();
-
-                        $('#modal-delete-attachment-' + this.type + '-' + this.id).modal('hide');
+                        $('#modal-delete-attachment-' + this.type + '-' + this.id).modal("hide");
                     });
             },
+
             canDeleteAttachment(attachment) {
                 return true;
             },

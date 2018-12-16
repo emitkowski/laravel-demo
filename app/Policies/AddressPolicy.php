@@ -6,6 +6,11 @@ use App\Models\Address;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
+/**
+ * Class AddressPolicy
+ *
+ * @package App\Policies
+ */
 class AddressPolicy
 {
     use HandlesAuthorization;

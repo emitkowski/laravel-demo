@@ -1,0 +1,124 @@
+/**
+ * Color Range
+ * lightest
+ * lighter
+ * light
+ * middle
+ * dark
+ * darker
+ * darkest
+ */
+
+
+$beard-colors: (
+    
+    dark: $dark,
+    white: $white,
+    transparent: transparent,
+
+    grey-lightest:$greyLightest,
+    grey-lighter:$greyLighter,
+    grey-light:$greyLight,
+    grey: $grey,
+    grey-dark: $greyDark,
+    grey-darker: $greyDarker,
+    grey-darkest: $greyDarkest,
+
+    green-lightest:$greenLightest,
+    green-lighter:$greenLighter,
+    green-light:$greenLight,
+    green: $green,
+    green-dark: $greenDark,
+    green-darker: $greenDarker,
+    green-darkest: $greenDarkest,
+
+    cream: $cream,
+    
+    blue-lightest: $blueLightest,
+    blue-lighter: $blueLighter,
+    blue-light: $blueLight,
+    blue: $blue,
+    blue-bright: $blueBright,
+    blue-dark: $blueDark,
+    blue-darker: $blueDarker,
+    blue-darkest: $blueDarkest,
+
+    red-darkest: $red-darkest,
+    red-darker: $red-darker,
+    red-dark: $red-dark,
+    red: $red,
+    red-light: $red-light,
+    red-lighter: $red-lighter,
+    red-lightest: $red-lightest,
+
+    orange-darkest: $orange-darkest,
+    orange-darker: $orange-darker,
+    orange-dark: $orange-dark,
+    orange: $orange,
+    orange-light: $orange-light,
+    orange-lighter: $orange-lighter,
+    orange-lightest: $orange-lightest
+    
+);
+
+@each $name, $color in $beard-colors {
+    .tc-#{$name} {
+        color: $color !important;
+    }
+    .bc-#{$name} {
+        background-color: $color !important;
+    }
+    .f-#{$name} {
+        fill: $color !important;
+    }
+    .brdr-#{$name} {
+        border-color: $color !important;
+    }
+    .brdr-top-#{$name} {
+        border-top: $color !important;
+    }
+    .brdr-bottom-#{$name} {
+        border-bottom: $color !important;
+    }
+    .brdr-#{$name}-hover:hover {
+        border-color: $color !important;
+    }
+    .tc-#{$name}-hover:hover {
+        color: $color !important;
+    }
+    .bc-#{$name}-hover:hover {
+        background-color: $color !important;
+    }
+    .bc-#{$name}-focus:focus {
+        background-color: $color !important;   
+    }
+};
+
+
+
+/***** TEXT COLOR **************************************************************************/
+/************************************************************************************************/
+.tcw {
+    color: white !important;
+}
+
+.tcblk {
+    color: black !important;
+}
+
+
+/***** BACKGROUND COLOR **************************************************************************/
+/************************************************************************************************/
+.bcw {
+    background-color: white !important;
+}
+
+
+
+/***** SVG FILL COLOR **************************************************************************/
+/************************************************************************************************/
+
+
+/***** BORDER COLOR **************************************************************************/
+/************************************************************************************************/
+

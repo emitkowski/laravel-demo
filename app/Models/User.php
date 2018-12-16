@@ -8,6 +8,11 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
+/**
+ * Class User
+ *
+ * @package App\Models
+ */
 class User extends Authenticatable
 {
     use Notifiable, Activable, UserMutator;
@@ -43,5 +48,15 @@ class User extends Authenticatable
     public function getNameAttribute()
     {
         return $this->first_name . ' ' . $this->last_name;
+    }
+
+    /**
+     * Check if user is admin
+     *
+     * @return bool
+     */
+    public function isAdmin()
+    {
+        return true;
     }
 }

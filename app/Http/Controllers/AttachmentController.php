@@ -1,11 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Portal;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Http\Controllers\PolymorphicResponse;
 use App\Models\Attachment;
-use App\Services\Deliverable\AttachmentManager\Uploader;
+use App\Services\AttachmentManager\Uploader;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -14,7 +12,7 @@ use Illuminate\Support\Facades\Lang;
 /**
  * Class AttachmentController
  *
- * @package App\Http\Controllers\Portal
+ * @package App\Http\Controllers
  */
 class AttachmentController extends Controller
 {

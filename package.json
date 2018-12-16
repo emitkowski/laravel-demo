@@ -10,25 +10,24 @@
     "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
   },
   "dependencies": {
+    "animate.css": "^3.6.1",
     "axios": "^0.18",
     "bootstrap": "^4.1.0",
+    "bootstrap-switch": "^3.3.4",
+    "bootstrap-table": "1.11.1",
     "cross-env": "^5.1",
+    "datatables.mark.js": "2.0.1",
+    "font-awesome": "^4.7.0",
     "jquery": "^3.2",
+    "jquery-mask-plugin": "^1.14.13",
+    "jquery.nicescroll": "3.7.6",
     "laravel-mix": "^2.0",
     "lodash": "^4.17.5",
+    "mark.js": "8.11.1",
+    "moment": "^2.10.6",
     "popper.js": "^1.12",
     "vue": "^2.5.7",
     "vue-clip": "^1.0.0",
-    "font-awesome": "^4.7.0",
-    "datatables.net": "^1.10.19",
-    "datatables.net-bs4": "^1.10.19",
-    "jquery-mask-plugin": "^1.14.13",
-
-    "jquery.nicescroll": "3.7.6",
-    "datatables.mark.js": "2.0.1",
-    "bootstrap-table": "1.11.1",
-    "mark.js": "8.11.1",
-    "bootstrap-switch": "^3.3.4",
-    "animate.css": "^3.6.1"
+    "vue-tabs-component": "^1.5.0"
   }
 }

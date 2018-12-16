@@ -14,7 +14,7 @@ use Illuminate\Database\QueryException;
  *
  * @package App\Http\Controllers\API\V1
  */
-class APIController extends Controller
+abstract class APIController extends Controller
 {
     /**
      * Resource Name
@@ -190,7 +190,7 @@ class APIController extends Controller
     protected function resource($item)
     {
         if (!isset($this->resource_name)) {
-            return $this->error_response->errorInternalError('Resource Not Configured');
+            return $this->error_response->errorInternalError('Resource Not Created');
         }
 
         return ResourceFactory::resource($this->resource_name, $item);
@@ -205,7 +205,7 @@ class APIController extends Controller
     protected function resourceCollection($collection)
     {
         if (!isset($this->resource_name)) {
-            return $this->error_response->errorInternalError('Resource Not Configured');
+            return $this->error_response->errorInternalError('Resource Not Created');
         }
 
         return ResourceFactory::resourceCollection($this->resource_name, $collection);

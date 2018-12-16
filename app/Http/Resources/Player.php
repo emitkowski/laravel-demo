@@ -26,7 +26,8 @@ class Player extends Resource
             'first_name' => $this->first_name,
             'last_name' => $this->last_name,
             'created_at' => $this->formatDateTime($this->created_at),
-            'updated_at' => $this->formatDateTime($this->updated_at)
+            'updated_at' => $this->formatDateTime($this->updated_at),
+            'team' => $this->whenLoaded('teams')
         ];
     }
 }

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Team;
+
 /**
  * Class TeamController
  *
@@ -17,6 +19,17 @@ class TeamController extends Controller
     public function index()
     {
         return view('teams.index');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param Team $team
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Team $team)
+    {
+        return view('teams.show', compact('team'));
     }
 
 }

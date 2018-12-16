@@ -1,0 +1,85 @@
+// Flexbox Modules
+
+.flex, .df {
+    display: flex !important;
+}
+
+.flex-auto {
+    flex: auto !important;
+}
+
+.ffrw {
+    flex-flow: row wrap !important;
+}
+
+.fdr {
+    flex-direction: row !important;
+}
+.fdc {
+    flex-direction: column !important;
+}
+
+// JUSTIFY CONTENT
+.jcc {
+    justify-content: center !important;
+}
+.jcsb {
+    justify-content: space-between !important;
+}
+.jcsa {
+    justify-content: space-around !important;  
+}
+.jcse {
+    justify-content: space-evenly !important;  
+}
+.jcfs {
+    justify-content: flex-start !important;
+}
+.jcfe {
+    justify-content: flex-end !important;
+}
+
+// ALIGN ITEMS
+.aic {
+    align-items: center !important;
+}
+.aifs {
+    align-items: flex-start !important;
+}
+.aife {
+    align-items: flex-end !important;
+}
+.ais {
+    align-items: stretch !important;
+}
+.aib {
+    align-items: baseline !important;
+}
+
+// ALIGN CONTENT
+.acc {
+    align-content: center !important;
+}
+.acfs {
+    align-content: flex-start !important;
+}
+.acfe {
+    align-content: flex-end !important;
+}
+.acs {
+    align-content: stretch !important;
+}
+.acb {
+    align-content: baseline !important;
+}
+
+// Flex grow
+.flex-grow-1 {
+    flex-grow: 1;
+}
+.flex-grow-2 {
+    flex-grow: 2;
+}
+.flex-grow-3 {
+    flex-grow: 3;
+}

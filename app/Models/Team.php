@@ -17,6 +17,15 @@ class Team extends Model
     use Activable, Addressable, HasAttachment;
 
     /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'name'
+    ];
+
+    /**
      * Players relation
      *
      * @return \Illuminate\Database\Eloquent\Relations\belongsToMany

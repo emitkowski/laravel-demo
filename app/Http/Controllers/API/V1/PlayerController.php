@@ -32,6 +32,15 @@ class PlayerController extends APIController
     }
 
     /**
+     * Display a listing of all the resource.
+     *
+     */
+    public function index()
+    {
+        return $this->resourceCollection($this->model->with('teams')->get());
+    }
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param PlayerRequest $request

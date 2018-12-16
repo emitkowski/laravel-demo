@@ -2,7 +2,10 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\Facades\Gate;
+use App\Models\Address;
+use App\Models\Attachment;
+use App\Policies\AddressPolicy;
+use App\Policies\AttachmentPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
@@ -13,7 +16,8 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        'App\Model' => 'App\Policies\ModelPolicy',
+        Address::class => AddressPolicy::class,
+        Attachment::class => AttachmentPolicy::class,
     ];
 
     /**

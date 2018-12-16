@@ -1,0 +1,68 @@
+// generates .w6px to .w40px width classes
+// meaning width: 6px;
+@for $i from 5 through 50 {
+    .h#{$i}px {
+        height: #{$i}px;
+    }
+}
+.h100 {
+    height: 100%;
+}
+.h70px {
+    height: 70px;
+}
+
+.h90px {
+    height:90px;
+}
+
+.h150px {
+    height: 150px;
+}
+
+.h160px {
+	height: 160px;
+}
+
+.h280px {
+    height: 280px;
+}
+
+.mh140px {
+    min-height: 140px;
+}
+
+.mh275px {
+    min-height: 275px;
+}
+
+.mh300px {
+    min-height: 300px;
+}
+
+.mh350px {
+    min-height: 350px;
+}
+
+.mh430px {
+    min-height: 430px;
+}
+
+.mh675px {
+    min-height: 675px;
+}
+
+.h100vh {
+    min-height: 100vh;
+}
+
+.h80vh {
+    min-height: 80vh;   
+}
+.h70vh {
+    min-height: 70vh;   
+}
+
+.h60vh {
+    min-height: 60vh;
+}

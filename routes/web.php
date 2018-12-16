@@ -23,10 +23,20 @@
 // Authenticated User Routes
 Route::group(['middleware' => 'auth'], function () {
 
+    // Home
     Route::get('/', 'HomeController@show')->name('home');
 
+    // Teams
     Route::get('teams', 'TeamController@index')->name('teams.index');
+    Route::get('teams/{team}', 'TeamController@show')->name('teams.show');
+
+    // Players
     Route::get('players', 'PlayerController@index')->name('players.index');
+    Route::get('players/{player}', 'PlayerController@show')->name('players.show');
+
+    // Geo
+    Route::get('geo/states', 'GeoController@states')->name('geo.states');
+    Route::get('geo/countries', 'GeoController@countries')->name('geo.countries');
 
     // Attachments
     Route::get('attachment/{type}/{id}/{group?}', 'AttachmentController@index')->name('attachment.index');

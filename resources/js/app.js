@@ -7,19 +7,26 @@
 
 require('./bootstrap');
 
+window.Spark = [];
+window.moment = require('moment');
 window.Vue = require('vue');
 
 import VueClip from 'vue-clip'
 Vue.use(VueClip);
 
+import Tabs from 'vue-tabs-component';
+Vue.use(Tabs);
 
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
+require('./filters');
 
-Vue.component('example-component', require('./components/ExampleComponent.vue'));
+require('./forms/bootstrap');
+
+Vue.component('team-grid', require('./components/Teams/TeamGrid.vue'));
+Vue.component('team-edit', require('./components/Teams/TeamEdit.vue'));
+
+Vue.component('player-grid', require('./components/Players/PlayerGrid.vue'));
+Vue.component('player-edit', require('./components/Players/PlayerEdit.vue'));
+
 Vue.component('uploader', require('./components/Uploader.vue'));
 Vue.component('attachment-list', require('./components/AttachmentList.vue'));
 Vue.component('attachments', require('./components/Attachments.vue'));

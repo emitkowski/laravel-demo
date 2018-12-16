@@ -26,7 +26,7 @@ class Team extends Resource
             'name' => $this->name,
             'created_at' => $this->formatDateTime($this->created_at),
             'updated_at' => $this->formatDateTime($this->updated_at),
-            'players' => Player::collection($this->players)
+            'players' =>  Player::collection($this->whenLoaded('players'))
         ];
     }
 }

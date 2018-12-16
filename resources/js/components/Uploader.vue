@@ -143,13 +143,6 @@
                 if (status === 'success') {
                     // this.$parent.$emit('addedAttachment');
                     this.$parent.$emit('refreshAttachments');
-                    
-                    swal({
-                        title: "Upload Successful!",
-                        text: this.sweetAlertMessage,
-                        type: "success",
-                        confirmButtonColor: "#66cc99"
-                    });
                 }
             },
 
@@ -171,14 +164,6 @@
                 }
 
                 return `${(bytes / (1024 ** i)).toFixed(1)} ${sizes[i]}`;
-            }
-        },
-        computed: {
-            sweetAlertMessage: function () {
-                if (this.group !== null) {
-                    return "Thank you. We've received your "+this.group+" upload.";
-                }
-                return "Thank you. We've received your submission.";
             }
         }
     }

@@ -17,6 +17,16 @@ class Player extends Model
     use Activable, Addressable, HasAttachment;
 
     /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'first_name',
+        'last_name',
+    ];
+
+    /**
      * Teams relation
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany

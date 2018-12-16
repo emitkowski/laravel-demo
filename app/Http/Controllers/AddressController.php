@@ -1,9 +1,7 @@
 <?php
 
-namespace App\Http\Controllers\Portal;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Http\Controllers\PolymorphicResponse;
 use App\Http\Requests\AddressRequest;
 use App\Models\Address;
 use Illuminate\Database\QueryException;
@@ -12,7 +10,7 @@ use Illuminate\Http\JsonResponse;
 /**
  * Class AddressController
  *
- * @package App\Http\Controllers\Portal
+ * @package App\Http\Controllers
  */
 class AddressController extends Controller
 {
