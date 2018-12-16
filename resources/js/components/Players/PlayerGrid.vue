@@ -17,18 +17,18 @@
             <thead>
             <tr>
                 <th>ID</th>
-                <th>Team</th>
                 <th>First Name</th>
                 <th>Last Name</th>
+                <th>Team</th>
                 <th colspan="2">Actions</th>
             </tr>
             </thead>
             <tbody>
             <tr v-for="player in players" :key="player.id">
                 <td>{{ player.id }}</td>
-                <td><span v-if="player.team[0]">{{ player.team[0].name }}</span><span v-else>N/A</span></td>
                 <td>{{ player.first_name }}</td>
                 <td>{{ player.last_name }}</td>
+                <td><span v-if="player.team[0]">{{ player.team[0].name }}</span><span v-else>N/A</span></td>
                 <td><a v-bind:href="'/players/' + player.id">
                     <button class="btn btn-primary">Edit</button>
                 </a></td>

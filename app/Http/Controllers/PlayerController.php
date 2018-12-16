@@ -25,12 +25,12 @@ class PlayerController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param Player $player
+     * @param $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Player $player)
+    public function show($id)
     {
-        return view('players.show', compact('player'));
+        return view('players.show', compact('id'));
     }
 
 }

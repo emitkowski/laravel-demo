@@ -24,12 +24,12 @@ class TeamController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param Team $team
+     * @param $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Team $team)
+    public function show($id)
     {
-        return view('teams.show', compact('team'));
+        return view('teams.show', compact('id'));
     }
 
 }
