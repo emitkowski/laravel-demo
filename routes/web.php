@@ -13,7 +13,7 @@
 
 /*
 |--------------------------------------------------------------------------
-| Customer Routes
+| Application Routes
 |--------------------------------------------------------------------------
 |
 | Routes for public users of application
@@ -55,7 +55,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 /*
 |--------------------------------------------------------------------------
-| User Auth Routes
+| Auth Routes
 |--------------------------------------------------------------------------
 |
 | Routes for authentication of users of application
@@ -63,40 +63,3 @@ Route::group(['middleware' => 'auth'], function () {
 */
 
 Auth::routes();
-
-/*
-|--------------------------------------------------------------------------
-| Examples Routes
-|--------------------------------------------------------------------------
-|
-| Routes for examples valid only in test environments
-|
-*/
-
-Route::group(['namespace' => 'Examples'], function () {
-
-    if (app()->environment() !== 'production') {
-        Route::get('test', 'TestController@index');
-        Route::get('test/text', 'TestController@text');
-        Route::get('test/log', 'TestController@log');
-    }
-});
-
-/*
-|--------------------------------------------------------------------------
-| Development Routes
-|--------------------------------------------------------------------------
-|
-| Routes for developer information
-|
-*/
-
-Route::get('env', function () {
-    dd(app()->environment());
-});
-
-Route::get('info', function () {
-    if (app()->environment() !== 'production') {
-        phpinfo();
-    }
-});

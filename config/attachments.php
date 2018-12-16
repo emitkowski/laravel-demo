@@ -74,15 +74,9 @@ return [
    |
    */
     'limits' => [
-        'user' => [
-            'approved' => [
-                'quantity' => 1000,
-                'storage' => 250
-            ],
-            'unapproved' => [
-                'quantity' => 100,
-                'storage' => 50
-            ]
+        'player' => [
+            'quantity' => 3,
+            'storage' => 250
         ]
     ]
 ];

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Traits\Activable;
 use App\Models\Traits\Addressable;
+use App\Models\Traits\AttachmentLimitable;
 use Bnb\Laravel\Attachments\HasAttachment;
 use Illuminate\Database\Eloquent\Model;
 
@@ -14,7 +15,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Player extends Model
 {
-    use Activable, Addressable, HasAttachment;
+    use Activable, Addressable, AttachmentLimitable, HasAttachment;
 
     /**
      * The attributes that are mass assignable.
