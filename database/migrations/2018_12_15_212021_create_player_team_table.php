@@ -17,7 +17,7 @@ class CreatePlayerTeamTable extends Migration
             $table->unsignedInteger('player_id');
             $table->unsignedInteger('team_id');
 
-            $table->unique(['team_id', 'user_id']);
+            $table->unique(['team_id', 'player_id']);
         });
     }
 

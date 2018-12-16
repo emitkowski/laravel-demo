@@ -20,15 +20,13 @@
 |
 */
 
-Route::get('/', 'WelcomeController@show');
-
 // Authenticated User Routes
 Route::group(['middleware' => 'auth'], function () {
 
-    Route::get('/home', 'HomeController@show')->name('home');
+    Route::get('/', 'HomeController@show')->name('home');
 
-    Route::resource('users', 'UserController');
-    Route::resource('teams', 'TeamController');
+    Route::get('teams', 'TeamController@index')->name('teams.index');
+    Route::get('players', 'PlayerController@index')->name('players.index');
 
     // Attachments
     Route::get('attachment/{type}/{id}/{group?}', 'AttachmentController@index')->name('attachment.index');

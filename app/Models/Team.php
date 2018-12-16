@@ -5,18 +5,31 @@ namespace App\Models;
 use App\Models\Traits\Activable;
 use App\Models\Traits\Addressable;
 use Bnb\Laravel\Attachments\HasAttachment;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Team
  *
  * @package App\Models
  */
-class Team
+class Team extends Model
 {
     use Activable, Addressable, HasAttachment;
 
     /**
-     * Get all of the owning addressable models.
+     * Players relation
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\belongsToMany
+     */
+    public function players()
+    {
+        return $this->belongsToMany(Player::class);
+    }
+
+    /**
+     * Address polymorphic relation
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\MorphTo
      */
     public function addressable()
     {
@@ -24,8 +37,9 @@ class Team
     }
 
     /**
-     * Get the attachments relation morphed to the current model class
+     * Attachment polymorphic relation
      *
+     * @return \Illuminate\Database\Eloquent\Relations\MorphMany
      */
     public function attachments()
     {

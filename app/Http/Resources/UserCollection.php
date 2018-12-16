@@ -10,8 +10,6 @@ use Illuminate\Http\Resources\Json\ResourceCollection;
  */
 class UserCollection extends ResourceCollection
 {
-    use ResourceWrapper;
-
     /**
      * Transform the resource collection into an array.
      *

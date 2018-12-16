@@ -1,9 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\User;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-
+/**
+ * Class HomeController
+ *
+ * @package App\Http\Controllers
+ */
 class HomeController extends Controller
 {
     /**
@@ -23,6 +26,6 @@ class HomeController extends Controller
      */
     public function show()
     {
-        return view('user.home');
+        return view('home');
     }
 }

@@ -10,8 +10,8 @@ class UserTableSeeder extends Seeder
     {
         $factory = factory(User::class);
 
-        if (!User::where('email', 'eric@demo.com')->exists()) {
-            $factory->create(['first_name' => 'Eric', 'last_name' => 'Mitkowski', 'email' => 'eric@demo.com', 'approved_at' => now()]);
+        if (!User::where('email', 'admin@demo.com')->exists()) {
+            $factory->create(['first_name' => 'Demo', 'last_name' => 'User', 'email' => 'admin@demo.com']);
         }
     }
 

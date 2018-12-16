@@ -30,6 +30,6 @@ trait ResourceFormatter
      */
     protected function formatDateTime($date)
     {
-        return Carbon::parse($date)->toIso8601String();
+        return Carbon::parse($date)->toAtomString();
     }
 }

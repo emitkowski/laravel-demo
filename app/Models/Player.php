@@ -17,7 +17,20 @@ class Player extends Model
     use Activable, Addressable, HasAttachment;
 
     /**
-     * Get all of the owning addressable models.
+     * Teams relation
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function teams()
+    {
+        return $this->belongsToMany(Team::class);
+    }
+
+
+    /**
+     * Address polymorphic relation
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\MorphTo
      */
     public function addressable()
     {
@@ -25,8 +38,9 @@ class Player extends Model
     }
 
     /**
-     * Get the attachments relation morphed to the current model class
+     * Attachment polymorphic relation
      *
+     * @return \Illuminate\Database\Eloquent\Relations\MorphMany
      */
     public function attachments()
     {

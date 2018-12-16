@@ -25,7 +25,6 @@ class UserRequest extends Request
             'first_name' => 'required|max:191',
             'last_name' => 'required|max:191',
             'email' => 'required|unique:users|max:191',
-            'phone' => 'nullable|string|max:191',
             'password' => 'required|string|min:6|confirmed'
         ];
 

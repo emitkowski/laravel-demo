@@ -23,7 +23,6 @@ class TeamRequest extends Request
     {
         $rules = [
             'name' => 'required|max:191',
-            'error_omission_exp_date' => 'nullable|date',
         ];
 
         return $rules;

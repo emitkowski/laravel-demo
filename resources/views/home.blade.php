@@ -1,23 +1,32 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">Dashboard</div>
-
-                    <div class="card-body">
-                        @if (session('status'))
-                            <div class="alert alert-success">
-                                {{ session('status') }}
-                            </div>
-                        @endif
-
-                        You are logged in!
-                    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card mrgn_btm">
+                <div class="card-header">
+                    <h3 class="card-title">
+                        Manage Teams
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <p><a href="{{ route('teams.index') }}">Mange My Teams</a></p>
                 </div>
             </div>
         </div>
+
+        <div class="col-md-3">
+            <div class="card mrgn_btm">
+                <div class="card-header">
+                    <h3 class="card-title">
+                        Manage Players
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <p><a href="{{ route('players.index') }}">Mange My Players</a></p>
+                </div>
+            </div>
+        </div>
+
     </div>
 @endsection

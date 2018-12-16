@@ -4,7 +4,6 @@ namespace App\Services\Command;
 
 use Illuminate\Console\Command;
 
-
 /**
  * Class CommandAbstract
  * 

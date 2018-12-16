@@ -6,12 +6,12 @@ use Illuminate\Http\Resources\Json\Resource;
 
 /**
  * Class User
+ *
  * @package App\Http\Resources
  */
 class User extends Resource
 {
     use ResourceFormatter;
-    use ResourceWrapper;
 
     /**
      * Transform the resource into an array.
