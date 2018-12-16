@@ -17,9 +17,9 @@ class PlayerTeamTableSeeder extends Seeder
      */
     public function run()
     {
-        app()->make(Team::class)->truncate();
-        app()->make(Player::class)->truncate();
-        app()->make(PlayerTeam::class)->truncate();
+//        app()->make(Team::class)->truncate();
+//        app()->make(Player::class)->truncate();
+//        app()->make(PlayerTeam::class)->truncate();
 
         // Seed Teams
         factory(Team::class, $this->teams)->create()

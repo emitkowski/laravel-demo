@@ -7,13 +7,16 @@
                     <div class="alert alert-info" v-if="teamUpdated">Team Updated!</div>
                 </transition>
 
-                <h2>Team: ID #{{ team.id }}</h2>
+                <h2>Team: #{{ team.id }}</h2>
                 <form @submit.prevent="updateTeam">
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Team Name:</label>
-                                <input type="text" class="form-control" v-model="team.name">
+                                <input type="text" class="form-control" v-model="teamForm.name">
+                                <span class="help-block" v-show="teamForm.errors.has('name')">
+                                    {{ teamForm.errors.get('name') }}
+                                </span>
                             </div>
                         </div>
                     </div><br />
@@ -23,7 +26,7 @@
                 </form>
             </tab>
             <tab name="Team Files">
-                <attachments :type="'team'" :id="id" :name="'My Team'"></attachments>
+                <attachments :type="'team'" :id="id" :name="this.team.name"></attachments>
             </tab>
             <tab name="Team Addresses">
                 <addresses :type="'team'" :id="id"></addresses>
@@ -41,6 +44,7 @@
         data() {
             return {
                 team: {},
+                teamForm: new SparkForm(),
                 teamUpdated: false,
             }
         },
@@ -51,12 +55,12 @@
                 }
             }).then((response) => {
                 this.team = response.data.data;
-                this.teamForm = response.data.data;
+                this.teamForm.name = response.data.data.name;
             });
         },
         methods: {
             updateTeam() {
-                axios.put('/api/teams/' + this.id, this.teamForm, {
+                Spark.put('/api/teams/' + this.id, this.teamForm, {
                     headers: {
                         Authorization: 'Bearer ' + localStorage.getItem('token')
                     }

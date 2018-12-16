@@ -24,6 +24,7 @@ class PlayerRequest extends Request
         $rules = [
             'first_name' => 'required|max:191',
             'last_name' => 'required|max:191',
+            'team' => 'required',
         ];
 
         return $rules;

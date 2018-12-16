@@ -12,7 +12,7 @@
 */
 
 
-Route::group([/*'middleware' => 'auth:api',*/ 'namespace' => 'API\V1'], function () {
+Route::group(['middleware' => 'auth:api', 'namespace' => 'API\V1'], function () {
 
     // Users Routes
     Route::get('users', 'UserController@index');

@@ -7,20 +7,43 @@
                     <div class="alert alert-info" v-if="playerUpdated">Player Updated!</div>
                 </transition>
 
-                <h2>Player: ID #{{ player.id }}</h2>
-                <form @submit.prevent="updatePlayer">
+                <h2>Player: #{{ player.id }}</h2>
+                <form @submit.prevent="updatePlayer" class="needs-validation">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Team:</label>
+                                <select class="form-control" v-model="playerForm.team">
+                                    <option v-for="team in teams" :value="team.id">
+                                        {{ team.name }}
+                                    </option>
+                                </select>
+                                <div class="help-block" v-show="playerForm.errors.has('team')">
+                                    {{ playerForm.errors.get('team') }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>First Name:</label>
-                                <input type="text" class="form-control" v-model="player.first_name">
+                                <input type="text" class="form-control" v-model="playerForm.first_name">
                             </div>
+                            <span class="help-block" v-show="playerForm.errors.has('first_name')">
+                                {{ playerForm.errors.get('first_name') }}
+                            </span>
                         </div>
+                    </div>
+                    <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Last Name:</label>
-                                <input type="text" class="form-control" v-model="player.last_name">
+                                <input type="text" class="form-control" v-model="playerForm.last_name">
                             </div>
+                            <span class="help-block" v-show="playerForm.errors.has('last_name')">
+                                {{ playerForm.errors.get('last_name') }}
+                            </span>
                         </div>
                     </div><br />
                     <div class="form-group">
@@ -29,7 +52,7 @@
                 </form>
             </tab>
             <tab name="Player Files">
-                <attachments :type="'player'" :id="id" :name="'My Player'"></attachments>
+                <attachments :type="'player'" :id="id" :name="this.player.first_name + ' ' + this.player.last_name"></attachments>
             </tab>
             <tab name="Player Addresses">
                 <addresses :type="'player'" :id="id"></addresses>
@@ -47,7 +70,9 @@
         data() {
             return {
                 player: {},
+                playerForm: new SparkForm(),
                 playerUpdated: false,
+                teams: {},
             }
         },
         created() {
@@ -57,12 +82,25 @@
                 }
             }).then((response) => {
                 this.player = response.data.data;
-                this.playerForm = response.data.data;
+                this.playerForm.first_name = response.data.data.first_name;
+                this.playerForm.last_name = response.data.data.last_name;
+
+                if (response.data.data.team[0]) {
+                    this.playerForm.team = response.data.data.team[0].id;
+                }
+            });
+
+            axios.get('/api/teams/', {
+                headers: {
+                    Authorization: 'Bearer ' + localStorage.getItem('token')
+                }
+            }).then((response) => {
+                this.teams = response.data.data;
             });
         },
         methods: {
             updatePlayer() {
-                axios.put('/api/players/' + this.id, this.playerForm, {
+                Spark.put('/api/players/' + this.id, this.playerForm, {
                     headers: {
                         Authorization: 'Bearer ' + localStorage.getItem('token')
                     }
