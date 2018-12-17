@@ -75,7 +75,7 @@
                 teams: {},
             }
         },
-        created() {
+        mounted() {
             axios.get('/api/players/' + this.id, {
                 headers: {
                     Authorization: 'Bearer ' + localStorage.getItem('token')

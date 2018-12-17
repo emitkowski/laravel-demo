@@ -67,7 +67,14 @@ class PlayerController extends APIController
      */
     public function store(PlayerRequest $request)
     {
-        return parent::storeResource($request);
+        try {
+            $item = $this->model->create($request->except('team'));
+            $item->teams()->attach($request->input('team'));
+        } catch(QueryException $e) {
+            return $this->error_response->errorWrongArgs('Invalid Field in Create Request: ' . $e->getMessage());
+        }
+
+        return $this->resource($item);
     }
 
     /**
@@ -85,11 +92,9 @@ class PlayerController extends APIController
             return $this->error_response->errorNotFound($this->resource_name . ' Not Found - ID# ' . $id);
         }
 
-        // Set Teams
-        $item->teams()->sync($request->input('team'));
-
         try {
             $item->update($request->except('team'));
+            $item->teams()->sync($request->input('team'));
         } catch(QueryException $e) {
             return $this->error_response->errorWrongArgs('Invalid Field in Update Request: ' . $e->getMessage());
         }

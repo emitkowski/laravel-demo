@@ -8,7 +8,7 @@
 
         <div class="row">
             <div class="col-md-2">
-                <!--<td><a v-bind:href="'/teams/'"><button class="btn btn-primary">Create Team</button></a></td>-->
+                <button @click="showTeamForm()" class="btn btn-primary">Create Team</button>
             </div>
         </div>
         <br/>
@@ -22,7 +22,12 @@
             </tr>
             </thead>
             <tbody>
-            <tr v-for="team in teams" :key="team.id">
+            <tr v-if="loadingTeams">
+                <td colspan=100>
+                    <div class="loading"><i class="fa fa-circle-o-notch fa-spin"></i></div>
+                </td>
+            </tr>
+            <tr v-for="team in teams" :key="team.id" v-if="!loadingTeams">
                 <td>{{ team.id }}</td>
                 <td>{{ team.name }}</td>
                 <td><a v-bind:href="'/teams/' + team.id">
@@ -34,6 +39,49 @@
             </tr>
             </tbody>
         </table>
+
+        <!-- Team Form Modal -->
+        <div class="modal" id="modal-add-team" tabindex="-1" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">Add New Team</h4>
+                    </div>
+
+                    <div class="modal-body">
+                        <form class="form-horizontal" role="form">
+
+                            <!-- Name -->
+                            <div class="form-group" :class="{'has-error': teamForm.errors.has('name')}">
+                                <label class="col-md-4 control-label">Name</label>
+
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" v-model="teamForm.name">
+                                    <span class="help-block" v-show="teamForm.errors.has('name')">
+                                        {{ teamForm.errors.get('name') }}
+                                    </span>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Modal Actions -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary"  @click="createTeam" :disabled="teamForm.busy">
+                            <span v-if="teamForm.busy">
+                                <i class="fa fa-btn fa-spinner fa-spin"></i> Adding Team
+                            </span>
+                            <span v-else>
+                                Add Team
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 </template>
 
@@ -43,19 +91,28 @@
         data() {
             return {
                 teams: [],
-                teamDeleted: false
+                teamForm: new SparkForm(),
+                teamDeleted: false,
+                loadingTeams: false
             }
         },
-        created() {
-            axios.get('/api/teams', {
-                headers: {
-                    Authorization: 'Bearer ' + localStorage.getItem('token')
-                }
-            }).then(response => {
-                this.teams = response.data.data;
-            });
+        mounted() {
+           this.getTeams();
         },
         methods: {
+
+            getTeams() {
+                this.loadingTeams = true;
+                axios.get('/api/teams', {
+                    headers: {
+                        Authorization: 'Bearer ' + localStorage.getItem('token')
+                    }
+                }).then(response => {
+                    this.teams = response.data.data;
+                    this.loadingTeams = false;
+                });
+            },
+
             deleteTeam(id) {
                 axios.delete('/api/teams/' + id, {
                     headers: {
@@ -71,6 +128,34 @@
                         }
                     }
                 });
+            },
+
+            createTeam() {
+                Spark.post('/api/teams', this.teamForm, {
+                    headers: {
+                        Authorization: 'Bearer ' + localStorage.getItem('token')
+                    }
+                })
+                    .then(() => {
+                        this.getTeams();
+                        $('#modal-add-team').modal('hide');
+                    });
+            },
+
+            showTeamForm() {
+
+                this.resetTeamForm();
+
+                $('#modal-add-team').modal('show');
+            },
+
+            /**
+             * Reset Team Form
+             */
+            resetTeamForm() {
+                this.teamForm.resetStatus();
+
+                this.teamForm.name = '';
             }
         }
     }

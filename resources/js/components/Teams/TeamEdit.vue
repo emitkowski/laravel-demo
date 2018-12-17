@@ -48,7 +48,7 @@
                 teamUpdated: false,
             }
         },
-        created() {
+        mounted() {
             axios.get('/api/teams/' + this.id, {
                 headers: {
                     Authorization: 'Bearer ' + localStorage.getItem('token')
