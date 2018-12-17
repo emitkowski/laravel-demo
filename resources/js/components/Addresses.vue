@@ -178,7 +178,7 @@
                                     <label class="col-md-4 control-label">State / Zip Code</label>
 
                                     <!-- State -->
-                                    <div class="col-sm-3">
+                                    <div class="col-sm-6">
                                         <select class="form-control" v-model="addressForm.state">
                                             <option v-for="(name, abbreviation) in states" :value="abbreviation">
                                                 {{ name }}

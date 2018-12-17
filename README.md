@@ -1,7 +1,7 @@
 ## Laravel Demo Project 
 
-- Laravel v5.7.0
-- VueJS 2.5.7
+- Laravel v5.7
+- VueJS 2.5
 
 
 ## Setup
