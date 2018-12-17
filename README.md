@@ -18,6 +18,7 @@ Email: ```admin@demo.com```  Password: ```secret```
 
 ### Teams
 
+- Add Team
 - List Teams
 - Edit Team
 - Delete Team
@@ -26,6 +27,7 @@ Email: ```admin@demo.com```  Password: ```secret```
 
 ### Players
 
+- Add Player
 - List Players
 - Edit Player
 - Delete Player
